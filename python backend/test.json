@@ -1,0 +1,206 @@
+{
+    "status": true,
+    "timestamp": 1756766375523,
+    "data": [
+        {
+            "skyId": "NYCA",
+            "entityId": "27537542",
+            "presentation": {
+                "title": "New York",
+                "suggestionTitle": "New York (Any)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "27537542",
+                "entityType": "CITY",
+                "localizedName": "New York",
+                "relevantFlightParams": {
+                    "skyId": "NYCA",
+                    "entityId": "27537542",
+                    "flightPlaceType": "CITY",
+                    "localizedName": "New York"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27537542",
+                    "entityType": "CITY",
+                    "localizedName": "New York"
+                }
+            }
+        },
+        {
+            "skyId": "JFK",
+            "entityId": "95565058",
+            "presentation": {
+                "title": "New York John F. Kennedy",
+                "suggestionTitle": "New York John F. Kennedy (JFK)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95565058",
+                "entityType": "AIRPORT",
+                "localizedName": "New York John F. Kennedy",
+                "relevantFlightParams": {
+                    "skyId": "JFK",
+                    "entityId": "95565058",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "New York John F. Kennedy"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27537542",
+                    "entityType": "CITY",
+                    "localizedName": "New York"
+                }
+            }
+        },
+        {
+            "skyId": "EWR",
+            "entityId": "95565059",
+            "presentation": {
+                "title": "New York Newark",
+                "suggestionTitle": "New York Newark (EWR)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95565059",
+                "entityType": "AIRPORT",
+                "localizedName": "New York Newark",
+                "relevantFlightParams": {
+                    "skyId": "EWR",
+                    "entityId": "95565059",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "New York Newark"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27537542",
+                    "entityType": "CITY",
+                    "localizedName": "New York"
+                }
+            }
+        },
+        {
+            "skyId": "LGA",
+            "entityId": "95565057",
+            "presentation": {
+                "title": "New York LaGuardia",
+                "suggestionTitle": "New York LaGuardia (LGA)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95565057",
+                "entityType": "AIRPORT",
+                "localizedName": "New York LaGuardia",
+                "relevantFlightParams": {
+                    "skyId": "LGA",
+                    "entityId": "95565057",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "New York LaGuardia"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27537542",
+                    "entityType": "CITY",
+                    "localizedName": "New York"
+                }
+            }
+        },
+        {
+            "skyId": "SWF",
+            "entityId": "95566280",
+            "presentation": {
+                "title": "Stewart International",
+                "suggestionTitle": "Stewart International (SWF)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95566280",
+                "entityType": "AIRPORT",
+                "localizedName": "Stewart International",
+                "relevantFlightParams": {
+                    "skyId": "SWF",
+                    "entityId": "95566280",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "Stewart International"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27537542",
+                    "entityType": "CITY",
+                    "localizedName": "New York"
+                }
+            }
+        },
+        {
+            "skyId": "BUF",
+            "entityId": "95673358",
+            "presentation": {
+                "title": "Buffalo Niagara",
+                "suggestionTitle": "Buffalo Niagara (BUF)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95673358",
+                "entityType": "AIRPORT",
+                "localizedName": "Buffalo Niagara",
+                "relevantFlightParams": {
+                    "skyId": "BUF",
+                    "entityId": "95673358",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "Buffalo Niagara"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27539605",
+                    "entityType": "CITY",
+                    "localizedName": "Buffalo"
+                }
+            }
+        },
+        {
+            "skyId": "ALB",
+            "entityId": "95674229",
+            "presentation": {
+                "title": "Albany",
+                "suggestionTitle": "Albany (ALB)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95674229",
+                "entityType": "AIRPORT",
+                "localizedName": "Albany",
+                "relevantFlightParams": {
+                    "skyId": "ALB",
+                    "entityId": "95674229",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "Albany"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27536537",
+                    "entityType": "CITY",
+                    "localizedName": "Albany"
+                }
+            }
+        },
+        {
+            "skyId": "SYR",
+            "entityId": "95674004",
+            "presentation": {
+                "title": "Syracuse",
+                "suggestionTitle": "Syracuse (SYR)",
+                "subtitle": "United States"
+            },
+            "navigation": {
+                "entityId": "95674004",
+                "entityType": "AIRPORT",
+                "localizedName": "Syracuse",
+                "relevantFlightParams": {
+                    "skyId": "SYR",
+                    "entityId": "95674004",
+                    "flightPlaceType": "AIRPORT",
+                    "localizedName": "Syracuse"
+                },
+                "relevantHotelParams": {
+                    "entityId": "27547103",
+                    "entityType": "CITY",
+                    "localizedName": "Syracuse"
+                }
+            }
+        }
+    ]
+}
