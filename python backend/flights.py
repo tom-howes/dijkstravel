@@ -1,9 +1,10 @@
-from airports import Airport
+from airport import Airport
+from flight import Flight
 import requests
 from datetime import datetime
 import sys
-# origin_airport = Airport("Origin")
-# destination_airport = Airport("Destination")
+origin_airport = Airport("Origin")
+destination_airport = Airport("Destination")
 
 url = "https://sky-scrapper.p.rapidapi.com/api/v1/flights/searchFlights"
 
@@ -16,18 +17,16 @@ headers = {
 class Flights:
 
     def __init__(self, origin, destination):
-        # self.origin = origin
-        # self.destination = destination
+        self.origin = origin
+        self.destination = destination
         self.date = self.set_date()
-        sys.exit()
         self.query = self.set_query()
-        self.response = requests.get(url=url, headers=headers, query=self.query)
+        self.response = requests.get(url=url, headers=headers, query=self.query).json()
 
     def set_query(self):
-
         return {"originSkyId":f"{self.origin.get_sky_id()}", "destinationSkyId":f"{self.destination.get_sky_id()}",
                  "originEntityId":f"{self.origin.get_entity_id()}", "destinationEntityId": f"{self.destination.get_entity_id()}",
-                 "date": f"{self.date}"}
+                 "date": f"{self.date}", "cabinClass":"economy", "adults": 1, "sortBy": "best", "currency":"USD", "market":"en-US", "countryCode": "US"}
     
     def set_date(self):
         while True:
@@ -42,7 +41,27 @@ class Flights:
             except RuntimeError:
                 print("Date cannot be in the past. Try again.")
         self.date = date_str
+    
+    def set_flights(self):
+        if self.response['status'] == False:
+            return ["No Flights Found"]
+        else:
+            flights = {}
+            for flight in self.response['data']['itineraries']:
+                if len(flight['legs']) > 1:
+                    continue
+                flight_id = flight['id']
+                price = flight['price']['raw']
+                flight_seg = flight['legs'][0]['segments'][0]
+                flight_num = flight_seg['flightNumber']
+                duration = flight_seg['durationInMinutes']
+                carrier = flight_seg['operatingCarrier']['name']
+                departure = datetime.strptime(flight_seg['departure'], "%Y-%m-%dT%H:%M:%S")
+                arrival = datetime.strptime(flight_seg['arrival'], "%Y-%m-%dT%H:%M:%S")
+                flights[flight_num] = Flight(id=flight_id, origin=self.origin, destination=self.destination,
+                                             duration=duration, price=price, carrier=carrier, departure_time=departure,
+                                             arrival_time=arrival)
 
 
 if __name__ == "__main__":
-    flights = Flights("yo", "lo")
+    flights = Flights(origin_airport, destination_airport)

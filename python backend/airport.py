@@ -18,7 +18,7 @@ class Airport:
         with open("test.json", "r") as f:
             self.response = json.load(f)
         # self.response = requests.get(url, headers=headers, params=self.query).json()
-        self.available_airports = self.get_airports()
+        self.available_airports = self.set_airports()
         self.name = self.select_airport()
         self.sky_id, self.entity_id = self.set_ids()
 
@@ -26,7 +26,7 @@ class Airport:
         city = input(f"Enter your {self.node} City: ")
         return {"query":{city}, "locale":"en-US"}
 
-    def get_airports(self):
+    def set_airports(self):
         if self.response['status'] == False:
             return ["No Nearby Airports Found"]
         else:
@@ -61,6 +61,9 @@ class Airport:
     
     def get_entity_id(self):
         return self.entity_id
+    
+    def print_airport(self):
+        print(f"{self.name} ({self.sky_id})")
 
 
 if __name__ == "__main__":

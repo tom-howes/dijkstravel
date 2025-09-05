@@ -1,0 +1,2 @@
+sortBy could be arranged by best, cheapest, fastest - to speed up dijkstras
+for now just using direct flights, can adjust if needed to reduce API calls
