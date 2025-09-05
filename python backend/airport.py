@@ -11,12 +11,14 @@ headers = {
 
 class Airport:
 
-    def __init__(self, node):
+    def __init__(self, node, file):
         self.node = node
         self.query = self.set_query()
         self.response = {}
-        with open("test.json", "r") as f:
+        ## For testing
+        with open(file, "r") as f:
             self.response = json.load(f)
+        # # API Call
         # self.response = requests.get(url, headers=headers, params=self.query).json()
         self.available_airports = self.set_airports()
         self.name = self.select_airport()
@@ -63,7 +65,7 @@ class Airport:
         return self.entity_id
     
     def print_airport(self):
-        print(f"{self.name} ({self.sky_id})")
+        print(f"{self.name}")
 
 
 if __name__ == "__main__":

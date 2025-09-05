@@ -28,3 +28,6 @@ src/components/test.js
 
 # Python virtualenv
 *.venv
+*/destination.json
+*/origin.json
+
