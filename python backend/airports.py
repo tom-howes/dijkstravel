@@ -20,7 +20,7 @@ class Airport:
         # self.response = requests.get(url, headers=headers, params=self.query).json()
         self.available_airports = self.get_airports()
         self.name = self.select_airport()
-        self.sky_id, self.entity_id = self.get_ids()
+        self.sky_id, self.entity_id = self.set_ids()
 
     def set_query(self):
         city = input(f"Enter your {self.node} City: ")
@@ -51,10 +51,16 @@ class Airport:
             except IndexError:
                 print("Invalid number. try again.")
     
-    def get_ids(self):
+    def set_ids(self):
         for airport in self.response['data']:
             if airport['presentation']['suggestionTitle'] == self.name:
                 return airport['skyId'], airport['entityId']
+    
+    def get_sky_id(self):
+        return self.sky_id
+    
+    def get_entity_id(self):
+        return self.entity_id
 
 
 if __name__ == "__main__":

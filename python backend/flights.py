@@ -1,21 +1,48 @@
-# # import requests
+from airports import Airport
+import requests
+from datetime import datetime
+import sys
+# origin_airport = Airport("Origin")
+# destination_airport = Airport("Destination")
 
-# # url = "https://kiwi-com-cheap-flights.p.rapidapi.com/one-way"
-# src_city = "boston_ma_us"
-# dest_city = "orlando_fl_us"
-# querystring = {"source":f"City:{src_city}","destination":f"City:{dest_city}r","currency":"usd","locale":"en","adults":"1","children":"0","infants":"0","handbags":"1","holdbags":"0","cabinClass":"ECONOMY","sortBy":"QUALITY","applyMixedClasses":"true","allowChangeInboundDestination":"true","allowChangeInboundSource":"true","allowDifferentStationConnection":"true","enableSelfTransfer":"true","allowOvernightStopover":"true","enableTrueHiddenCity":"true","allowReturnToDifferentCity":"false","allowReturnFromDifferentCity":"false","enableThrowAwayTicketing":"true","outbound":"SUNDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,MONDAY,TUESDAY","transportTypes":"FLIGHT","contentProviders":"FLIXBUS_DIRECTS,FRESH,KAYAK,KIWI","limit":"20"}
+url = "https://sky-scrapper.p.rapidapi.com/api/v1/flights/searchFlights"
 
-# # headers = {
-# # 	"x-rapidapi-key": "397f33e22bmsh01328fc3eb3099cp1fc14ejsnca5184158bdb",
-# # 	"x-rapidapi-host": "kiwi-com-cheap-flights.p.rapidapi.com"
-# # }
+querystring = {"originSkyId":"LOND","destinationSkyId":"NYCA","originEntityId":"27544008","destinationEntityId":"27537542","date":"2025-09-10","cabinClass":"economy","adults":"1","sortBy":"best","currency":"USD","market":"en-US","countryCode":"US"}
 
-# # response = requests.get(url, headers=headers, params=querystring)
+headers = {
+	"x-rapidapi-key": "397f33e22bmsh01328fc3eb3099cp1fc14ejsnca5184158bdb",
+	"x-rapidapi-host": "sky-scrapper.p.rapidapi.com"
+}
+class Flights:
 
-# # print(response.json())
+    def __init__(self, origin, destination):
+        # self.origin = origin
+        # self.destination = destination
+        self.date = self.set_date()
+        sys.exit()
+        self.query = self.set_query()
+        self.response = requests.get(url=url, headers=headers, query=self.query)
 
-# tom = "yomama"
-# str = {f"hello {tom}", f"hello {city}"}
-# print(str)
+    def set_query(self):
 
-airports = ["JFK", "LOG", "LAX"]
+        return {"originSkyId":f"{self.origin.get_sky_id()}", "destinationSkyId":f"{self.destination.get_sky_id()}",
+                 "originEntityId":f"{self.origin.get_entity_id()}", "destinationEntityId": f"{self.destination.get_entity_id()}",
+                 "date": f"{self.date}"}
+    
+    def set_date(self):
+        while True:
+            date_str = input("Enter Date (YYYY-MM-DD): ")
+            try:
+                parsed_date = datetime.strptime(date_str, '%Y-%m-%d')
+                if parsed_date < datetime.now():
+                    raise RuntimeError
+                break
+            except ValueError:
+                print("Invalid date format. Please enter the date in YYYY-MM-DD format.")
+            except RuntimeError:
+                print("Date cannot be in the past. Try again.")
+        self.date = date_str
+
+
+if __name__ == "__main__":
+    flights = Flights("yo", "lo")
