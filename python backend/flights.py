@@ -4,8 +4,6 @@ import requests
 from datetime import datetime
 import sys
 import json
-origin_airport = Airport("Origin", "origin.json")
-destination_airport = Airport("Destination", "destination.json")
 
 url = "https://sky-scrapper.p.rapidapi.com/api/v1/flights/searchFlights"
 
@@ -22,11 +20,11 @@ class Flights:
         self.destination = destination
         self.date = self.set_date()
         self.query = self.set_query()
-        self.response = {}
-        with open ("test_flights.json", "r") as f:
-            self.response = json.load(f)
-        ## Api call
-        # self.response = requests.get(url=url, headers=headers, params=self.query).json()
+        ## Test json file
+        # with open ("test_flights.json", "r") as f:
+        #     self.response = json.load(f)
+        # Api call
+        self.response = requests.get(url=url, headers=headers, params=self.query).json()
         self.flights = self.set_flights()
 
     def set_query(self):
@@ -72,6 +70,8 @@ class Flights:
             return flights
 
     def print_flights(self):
+        if len(self.flights.items()) == 0:
+            print("No flights found")
         for key, value in self.flights.items():
             if value.price < 400:
                 print(f"Flight Number: {key}\n____")
@@ -79,5 +79,7 @@ class Flights:
                 print("____")
 
 if __name__ == "__main__":
+    origin_airport = Airport("Origin", "origin.json")
+    destination_airport = Airport("Destination", "destination.json")
     flights = Flights(origin_airport, destination_airport)
     flights.print_flights()

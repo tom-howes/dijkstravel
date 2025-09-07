@@ -11,15 +11,15 @@ headers = {
 
 class Airport:
 
-    def __init__(self, node, file):
+    def __init__(self, node):
         self.node = node
         self.query = self.set_query()
         self.response = {}
         ## For testing
-        with open(file, "r") as f:
-            self.response = json.load(f)
-        # # API Call
-        # self.response = requests.get(url, headers=headers, params=self.query).json()
+        # with open(file, "r") as f:
+        #     self.response = json.load(f)
+        # API Call
+        self.response = requests.get(url, headers=headers, params=self.query).json()
         self.available_airports = self.set_airports()
         self.name = self.select_airport()
         self.sky_id, self.entity_id = self.set_ids()
@@ -34,6 +34,8 @@ class Airport:
         else:
             airports = []
             for airport in self.response['data']:
+                if "Any" in airport['presentation']['suggestionTitle']:
+                    continue
                 airports.append(airport['presentation']['suggestionTitle'])
             return airports
 
